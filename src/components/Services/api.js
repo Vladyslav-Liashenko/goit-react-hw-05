@@ -21,7 +21,7 @@ export const fetchPopular = async () => {
 };
 
 export const fetchSearch = async query => {
-    console.log(query);
+  console.log(query);
   const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
 
   const options = {
