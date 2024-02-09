@@ -1,18 +1,12 @@
-import { Link, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { NavBar } from './NavBar/NavBar';
 // import { useState } from 'react';
-import './App.css';
 // import axios from 'axios';
-
-// http://localhost:5173/
-// http://localhost:5173/Movies
 
 export const App = () => {
   return (
     <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/movies">Movies</Link>
-      </nav>
+      <NavBar />
 
       <Routes>
         <Route path="/" element={<div>Home</div>} />
