@@ -1,4 +1,4 @@
-import { fetchSearch } from '../components/Services/Api';
+import { fetchSearch } from '../components/Services/api';
 import { useState, useEffect } from 'react';
 import { SearchBar } from '../components/SearchBar/SearchBar';
 import { Link, useLocation } from 'react-router-dom';

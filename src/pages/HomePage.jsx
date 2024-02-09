@@ -1,4 +1,4 @@
-import { fetchPopular } from '../components/Services/Api';
+import { fetchPopular } from '../components/Services/api';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
