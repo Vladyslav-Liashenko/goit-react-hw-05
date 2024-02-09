@@ -3,10 +3,8 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function HomePage() {
-    const [populars, setPopulars] = useState([]);
-    const location = useLocation();
-
-//   const API_KEY = '8aba4e3419a44727b7eb66f35fce4fa2';
+  const [populars, setPopulars] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,10 +15,10 @@ export default function HomePage() {
         console.error("This didn't work.");
         throw error;
       }
-    }
+    };
     fetchData();
   }, []);
-    
+
   return (
     <div>
       <h1>Tranding today</h1>
@@ -28,11 +26,10 @@ export default function HomePage() {
         <ul>
           {populars.map(popular => (
             <li key={popular.id}>
-                  <Link
-                      to={`/movies/${popular.id}`}
-                      state={{ from: location }}>
+              <Link to={`/movies/${popular.id}`} state={{ from: location }}>
                 <h2>{popular.title}</h2>
               </Link>
+              <p>Popularity: {popular.popularity}</p>
             </li>
           ))}
         </ul>
