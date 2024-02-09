@@ -10,10 +10,10 @@ export const NavBar = () => {
   return (
     <nav className={styled.nav}>
       <NavLink to="/" className={buildLinkClass}>
-        🏠Home
+        🏠 Home
       </NavLink>
       <NavLink to="/movies" className={buildLinkClass}>
-        🎞Movies
+        🎞 Movies
       </NavLink>
     </nav>
   );
