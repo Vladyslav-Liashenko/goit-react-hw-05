@@ -8,12 +8,12 @@ const buildLinkClass = ({ isActive }) => {
 
 export const NavBar = () => {
   return (
-    <nav>
+    <nav className={styled.nav}>
       <NavLink to="/" className={buildLinkClass}>
-        Home
+        🏠Home
       </NavLink>
       <NavLink to="/movies" className={buildLinkClass}>
-        Movies
+        🎞Movies
       </NavLink>
     </nav>
   );

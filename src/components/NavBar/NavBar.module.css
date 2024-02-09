@@ -1,6 +1,8 @@
 .nav {
     display: flex;
-    gap: 4px;
+    gap: 20px;
+    padding: 15px;
+
 }
 .link {
     color: black;
@@ -8,6 +10,7 @@
 }
 .link:hover {
     text-decoration: underline;
+    font-weight: 600;
 }
 .active {
     color: orangered;
