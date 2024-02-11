@@ -4,6 +4,7 @@ import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { BackToLink} from '../components/BackToLink/BackToLink';
 import { Loader } from '../components/Loader/Loader';
 import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import styled from './MoviesIdPage.module.css';
 
 export default function MoviesIdPage() {
   const { movieId } = useParams();
@@ -35,7 +36,7 @@ export default function MoviesIdPage() {
       {error && <ErrorMassage/>}
 
       {movieData && (
-        <div>
+        <div className={styled.main}>
           <div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
@@ -55,7 +56,7 @@ export default function MoviesIdPage() {
               <p>{movieData.genres.map(genre => genre.name).join(', ')}</p>
             )}
           </div>
-          <div>
+          <div className={styled.mainInfo}>
             <h3>Additional information</h3>
             <ul>
               <li>
