@@ -21,7 +21,6 @@ export const fetchPopular = async () => {
 };
 
 export const fetchSearch = async query => {
-  console.log(query);
   const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
 
   const options = {
@@ -38,3 +37,25 @@ export const fetchSearch = async query => {
     throw error;
   }
 };
+
+export const fetchMovieId = async movieId => {
+  console.log(movieId);
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+
+  const options = {
+    params: {
+      api_key: API_KEY,
+    },
+  };
+
+  try {
+    const response = await axios.get(url, options);
+    return response.data;
+  } catch (error) {
+    console.error("This didn't work.");
+    throw error;
+  }
+};
+
+
+
