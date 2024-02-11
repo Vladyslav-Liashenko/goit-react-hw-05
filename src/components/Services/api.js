@@ -91,5 +91,3 @@ export const getReviews = async movieId => {
     throw error;
   }
 };
-
-

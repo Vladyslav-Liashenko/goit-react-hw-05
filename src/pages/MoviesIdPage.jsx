@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchMovieId } from '../components/Services/api';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader';
 
 export default function MoviesIdPage() {
@@ -48,6 +48,21 @@ export default function MoviesIdPage() {
             {movieData.genres && (
               <p>{movieData.genres.map(genre => genre.name).join(', ')}</p>
             )}
+          </div>
+          <div>
+            <h3>Additional information</h3>
+            <ul>
+              <li>
+                <Link to={`cast`} state={{ from: location }}>
+                  Cast
+                </Link>
+              </li>
+              <li>
+                <Link to={`reviews`} state={{ from: location }}>
+                  Reviews
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       )}
