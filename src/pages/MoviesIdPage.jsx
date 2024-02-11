@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { fetchMovieId } from '../components/Services/api';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { BackToLink} from '../components/BackToLink/BackToLink';
 import { Loader } from '../components/Loader/Loader';
 
 export default function MoviesIdPage() {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +29,7 @@ export default function MoviesIdPage() {
 
   return (
     <div>
+      <BackToLink to={backLinkHref}>GO BACK</BackToLink>
       {loading && <Loader />}
       {movieData && (
         <div>
@@ -37,7 +41,6 @@ export default function MoviesIdPage() {
           </div>
           <div>
             <h2>{movieData.title}</h2>
-
             <h3>User Score:</h3>
             <p>{movieData.vote_average}</p>
 
@@ -53,18 +56,14 @@ export default function MoviesIdPage() {
             <h3>Additional information</h3>
             <ul>
               <li>
-                <Link to={`cast`}>
-                  Cast
-                </Link>
+                <Link to={`cast`}>Cast</Link>
               </li>
               <li>
-                <Link to={`reviews`}>
-                  Reviews
-                </Link>
+                <Link to={`reviews`}>Reviews</Link>
               </li>
             </ul>
           </div>
-          <Outlet/>
+          <Outlet />
         </div>
       )}
     </div>
