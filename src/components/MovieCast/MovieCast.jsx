@@ -1,34 +1,40 @@
 import { getCast } from '../Services/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Loader } from '../Loader/Loader';
+import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
 
 export const MovieCast = () => {
   const { movieId } = useParams();
   const [movieCastData, setMovieCastData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getCast(movieId);
         if (data && data.cast) {
+          setLoading(true);
           setMovieCastData(data.cast);
         } else {
           setMovieCastData([]);
         }
         setLoading(false);
       } catch (error) {
-        console.error("This didn't work.");
+        setError(true);
         throw error;
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, [movieId]);
 
-  if (loading) return <div>Loading cast data...</div>;
-
   return (
     <div>
+      {loading && <Loader />}
+      {error && <ErrorMassage />}
       {movieCastData && (
         <div>
           <ul>

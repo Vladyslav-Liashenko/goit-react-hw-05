@@ -3,6 +3,7 @@ import { fetchMovieId } from '../components/Services/api';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { BackToLink} from '../components/BackToLink/BackToLink';
 import { Loader } from '../components/Loader/Loader';
+import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
 
 export default function MoviesIdPage() {
   const { movieId } = useParams();
@@ -10,6 +11,7 @@ export default function MoviesIdPage() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,8 +20,7 @@ export default function MoviesIdPage() {
         const data = await fetchMovieId(movieId);
         setMovieData(data);
       } catch (error) {
-        console.error("This didn't work.");
-        throw error;
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -31,6 +32,8 @@ export default function MoviesIdPage() {
     <div>
       <BackToLink to={backLinkHref}>GO BACK</BackToLink>
       {loading && <Loader />}
+      {error && <ErrorMassage/>}
+
       {movieData && (
         <div>
           <div>
