@@ -33,10 +33,10 @@ export const MovieReviews = () => {
       {movieReviewsData && (
         <div>
           <ul>
-            {movieReviewsData.map(info => (
-                <li key={info.id}>
-                    <h2> {info.author}</h2>
-                    <p>{info.content}</p>
+            {movieReviewsData.map(review => (
+                <li key={review.id}>
+                    <h2> {review.author}</h2>
+                    <p>{review.content}</p>
               </li>
             ))}
           </ul>
