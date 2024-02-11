@@ -23,13 +23,14 @@ export const MovieCast = () => {
         setLoading(false);
       } catch (error) {
         setError(true);
+        throw error;
       } finally {
         setLoading(false);
       }
     };
     fetchData();
   }, [movieId]);
-
+console.log(movieCastData);
   return (
     <div>
       {loading && <Loader />}
@@ -50,7 +51,6 @@ export const MovieCast = () => {
           </ul>
         </div>
       )}
-      ;
     </div>
   );
 };
