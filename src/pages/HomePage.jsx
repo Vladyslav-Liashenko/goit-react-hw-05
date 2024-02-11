@@ -1,19 +1,25 @@
 import { fetchPopular } from '../components/Services/api';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Loader } from '../components/Loader/Loader';
+import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
 
 export default function HomePage() {
   const [populars, setPopulars] = useState([]);
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchPopular();
+        setLoading(true);
         setPopulars(data.results);
       } catch (error) {
-        console.error("This didn't work.");
-        throw error;
+        setError(true);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -21,6 +27,8 @@ export default function HomePage() {
 
   return (
     <div>
+      {loading && <Loader />}
+      {error && <ErrorMassage />}
       <h1>Tranding today</h1>
       {populars.length > 0 && (
         <ul>

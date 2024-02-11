@@ -23,7 +23,6 @@ export const MovieCast = () => {
         setLoading(false);
       } catch (error) {
         setError(true);
-        throw error;
       } finally {
         setLoading(false);
       }
