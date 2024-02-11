@@ -39,7 +39,6 @@ export const fetchSearch = async query => {
 };
 
 export const fetchMovieId = async movieId => {
-  console.log(movieId);
   const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
 
   const options = {
@@ -57,5 +56,40 @@ export const fetchMovieId = async movieId => {
   }
 };
 
+export const getCast = async movieId => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
+
+  const options = {
+    params: {
+      api_key: API_KEY,
+    },
+  };
+
+  try {
+    const response = await axios.get(url, options);
+    return response.data;
+  } catch (error) {
+    console.error("This didn't work.");
+    throw error;
+  }
+};
+
+export const getReviews = async movieId => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews`;
+
+  const options = {
+    params: {
+      api_key: API_KEY,
+    },
+  };
+
+  try {
+    const response = await axios.get(url, options);
+    return response.data;
+  } catch (error) {
+    console.error("This didn't work.");
+    throw error;
+  }
+};
 
 

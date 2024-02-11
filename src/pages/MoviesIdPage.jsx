@@ -24,8 +24,6 @@ export default function MoviesIdPage() {
     fetchData();
   }, [movieId]);
 
-  console.log(movieData);
-
   return (
     <div>
       {loading && <Loader />}
