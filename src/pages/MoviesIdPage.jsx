@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchMovieId } from '../components/Services/api';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader';
 
 export default function MoviesIdPage() {
@@ -64,6 +64,7 @@ export default function MoviesIdPage() {
               </li>
             </ul>
           </div>
+          <Outlet/>
         </div>
       )}
     </div>

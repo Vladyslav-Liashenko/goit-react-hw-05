@@ -24,6 +24,7 @@ export const MovieCast = () => {
     };
     fetchData();
   }, [movieId]);
+    
   console.log(movieCastData);
 
   if (loading) return <div>Loading cast data...</div>;
