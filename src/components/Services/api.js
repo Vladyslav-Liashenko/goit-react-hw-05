@@ -85,6 +85,7 @@ export const getReviews = async movieId => {
 
   try {
     const response = await axios.get(url, options);
+
     return response.data;
   } catch (error) {
     console.error("This didn't work.");

@@ -12,7 +12,7 @@ export const MovieCast = () => {
       try {
         const data = await getCast(movieId);
         if (data && data.cast) {
-          setMovieCastData(data);
+          setMovieCastData(data.cast);
         } else {
           setMovieCastData([]);
         }
@@ -24,10 +24,28 @@ export const MovieCast = () => {
     };
     fetchData();
   }, [movieId]);
-    
-  console.log(movieCastData);
 
   if (loading) return <div>Loading cast data...</div>;
 
-  return <div>movieCast</div>;
+  return (
+    <div>
+      {movieCastData && (
+        <div>
+          <ul>
+            {movieCastData.map(actor => (
+              <li key={actor.id}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                  alt={actor.name}
+                />
+                <h4>{actor.name}</h4>
+                <p>Character: {actor.character}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      ;
+    </div>
+  );
 };
