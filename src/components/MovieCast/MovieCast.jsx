@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 import { ErrorMassage } from '../ErrorMassage/ErrorMassage';
 
-export const MovieCast = () => {
+const MovieCast = () => {
   const { movieId } = useParams();
   const [movieCastData, setMovieCastData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -54,3 +54,4 @@ console.log(movieCastData);
     </div>
   );
 };
+export default MovieCast;
