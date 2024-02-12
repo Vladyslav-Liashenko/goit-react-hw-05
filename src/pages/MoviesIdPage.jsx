@@ -31,7 +31,7 @@ export default function MoviesIdPage() {
 
   return (
     <div>
-      <BackToLink to={backLinkHref}>GO BACK</BackToLink>
+      <BackToLink to={backLinkHref} query={location.state?.query || ''}>GO BACK</BackToLink>
       {loading && <Loader />}
       {error && <ErrorMassage />}
 
