@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader';
 import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import styled from './HomePage.module.css';
 
 export default function HomePage() {
   const [populars, setPopulars] = useState([]);
@@ -29,13 +30,13 @@ export default function HomePage() {
     <div>
       {loading && <Loader />}
       {error && <ErrorMassage />}
-      <h1>Tranding today</h1>
+      <h1 className={styled.h1}>Tranding today</h1>
       {populars.length > 0 && (
         <ul>
           {populars.map(popular => (
-            <li key={popular.id}>
+            <li key={popular.id} className={styled.li}>
               <Link to={`/movies/${popular.id}`} state={{ from: location }}>
-                <h2>{popular.title}</h2>
+                <h2>{popular.title} - </h2>
               </Link>
               <p>Popularity: {popular.popularity}</p>
             </li>

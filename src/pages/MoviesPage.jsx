@@ -4,6 +4,7 @@ import { SearchBar } from '../components/SearchBar/SearchBar';
 import { Link, useLocation } from 'react-router-dom';
 import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
 import { Loader } from '../components/Loader/Loader';
+import styled from './MoviesPage.module.css';
 
 export default function MoviesPage() {
   const [query, setQuery] = useState([]);
@@ -39,7 +40,7 @@ export default function MoviesPage() {
       {searchs.length > 0 && (
         <ul>
           {searchs.map(search => (
-            <li key={search.id}>
+            <li key={search.id}  className={styled.li}>
               <Link to={`/movies/${search.id}`} state={{ from: location }}>
                 <h2>{search.title}</h2>
               </Link>

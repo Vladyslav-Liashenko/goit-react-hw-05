@@ -29,7 +29,6 @@ export const MovieReviews = () => {
     };
     fetchData();
   }, [movieId]);
-  console.log(movieReviewsData);
 
   return (
     <div>

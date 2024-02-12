@@ -30,7 +30,7 @@ const MovieCast = () => {
     };
     fetchData();
   }, [movieId]);
-console.log(movieCastData);
+
   return (
     <div>
       {loading && <Loader />}

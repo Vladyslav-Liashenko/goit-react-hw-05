@@ -1,0 +1,8 @@
+.li{
+    display: flex;
+    gap: 15px;
+    padding: 3px;
+}
+.h1 {
+    padding: 10px 20px;
+}

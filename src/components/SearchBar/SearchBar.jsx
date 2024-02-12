@@ -1,4 +1,5 @@
 import search from '../../assets/search-svgrepo-com.svg';
+import styled from './SearchBar.module.css';
 
 export const SearchBar = ({ onSearch }) => {
   const handleSubmit = e => {
@@ -10,7 +11,7 @@ export const SearchBar = ({ onSearch }) => {
   return (
     <div>
       <header>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styled.formsearch}>
           <button type="submit">
             <img src={search} alt="Search Icon" />
           </button>
