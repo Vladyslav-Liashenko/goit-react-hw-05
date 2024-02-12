@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { fetchMovieId } from '../components/Services/api';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { BackToLink} from '../components/BackToLink/BackToLink';
+import { BackToLink } from '../components/BackToLink/BackToLink';
 import { Loader } from '../components/Loader/Loader';
 import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import styled from './MoviesIdPage.module.css';
 
 export default function MoviesIdPage() {
   const { movieId } = useParams();
@@ -32,32 +33,36 @@ export default function MoviesIdPage() {
     <div>
       <BackToLink to={backLinkHref}>GO BACK</BackToLink>
       {loading && <Loader />}
-      {error && <ErrorMassage/>}
+      {error && <ErrorMassage />}
 
       {movieData && (
         <div>
-          <div>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
-              alt={movieData.title}
-            />
-          </div>
-          <div>
-            <h2>{movieData.title}</h2>
-            <h3>User Score:</h3>
-            <p>{movieData.vote_average}</p>
+          <div className={styled.movied}>
+            <div>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
+                alt={movieData.title}
+              />
+            </div>
+            <div>
+              <h1>{movieData.title}</h1>
+              <h2>
+                User Score:
+                <p>{movieData.vote_average}</p>
+              </h2>
 
-            <h3>Overview:</h3>
-            <p>{movieData.overview}</p>
+              <h2>Overview:</h2>
+              <p>{movieData.overview}</p>
 
-            <h3>Genres:</h3>
-            {movieData.genres && (
-              <p>{movieData.genres.map(genre => genre.name).join(', ')}</p>
-            )}
+              <h2>Genres:</h2>
+              {movieData.genres && (
+                <p>{movieData.genres.map(genre => genre.name).join(', ')}</p>
+              )}
+            </div>
           </div>
           <div>
             <h3>Additional information</h3>
-            <ul>
+            <ul className={styled.moviedinfo}>
               <li>
                 <Link to={`cast`}>Cast</Link>
               </li>
