@@ -11,7 +11,6 @@ export default function MoviesIdPage() {
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  console.log(location);
   const backLinkHref = location.state.from.search ?? '/movies';
   const [error, setError] = useState(false);
 
@@ -29,7 +28,8 @@ export default function MoviesIdPage() {
     };
     fetchData();
   }, [movieId]);
-
+  
+console.log(location.state.from.search);
   return (
     <div>
       <BackToLink to={backLinkHref}>GO BACK</BackToLink>
