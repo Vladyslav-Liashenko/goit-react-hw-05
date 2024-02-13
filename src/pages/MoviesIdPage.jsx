@@ -11,7 +11,8 @@ export default function MoviesIdPage() {
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  console.log(location);
+  const backLinkHref = location.state.from.search ?? '/movies';
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function MoviesIdPage() {
 
   return (
     <div>
-      <BackToLink to={backLinkHref} query={location.state?.query || ''}>GO BACK</BackToLink>
+      <BackToLink to={backLinkHref}>GO BACK</BackToLink>
       {loading && <Loader />}
       {error && <ErrorMassage />}
 

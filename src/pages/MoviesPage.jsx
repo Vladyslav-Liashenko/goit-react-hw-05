@@ -36,7 +36,7 @@ export default function MoviesPage() {
   const searchFilms = async query => {
     setQuery(query);
   };
-  console.log(query);
+  console.log(location);
 
   return (
     <div>
