@@ -1,10 +1,12 @@
 import search from '../../assets/search-svgrepo-com.svg';
 import styled from './SearchBar.module.css';
 
-export const SearchBar = ({ value, onSearch }) => {
+export const SearchBar = ({ onSearch }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    onSearch(e.target.elements.query.value);
+    const query = e.target.elements.query.value.trim().toLowerCase();
+    if (!query) return;
+    onSearch(query);
     e.target.reset();
   };
 
@@ -18,11 +20,9 @@ export const SearchBar = ({ value, onSearch }) => {
           <input
             type="text"
             name="query"
-            value={value}
             autoComplete="off"
             autoFocus
             placeholder="Search films"
-            onChange={e => onSearch(e.target.value)}
           />
         </form>
       </header>

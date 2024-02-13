@@ -1,8 +1,8 @@
-import { fetchPopular } from '../components/Services/api';
+import { fetchPopular } from '../../components/Services/api';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Loader } from '../components/Loader/Loader';
-import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import { Loader } from '../../components/Loader/Loader';
+import { ErrorMassage } from '../../components/ErrorMassage/ErrorMassage';
 import styled from './HomePage.module.css';
 
 export default function HomePage() {

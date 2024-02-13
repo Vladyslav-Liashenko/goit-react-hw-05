@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { fetchMovieId } from '../components/Services/api';
+import { useEffect, useRef, useState } from 'react';
+import { fetchMovieId } from '../../components/Services/api';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { BackToLink } from '../components/BackToLink/BackToLink';
-import { Loader } from '../components/Loader/Loader';
-import { ErrorMassage } from '../components/ErrorMassage/ErrorMassage';
+import { BackToLink } from '../../components/BackToLink/BackToLink';
+import { Loader } from '../../components/Loader/Loader';
+import { ErrorMassage } from '../../components/ErrorMassage/ErrorMassage';
 import styled from './MoviesIdPage.module.css';
 
 export default function MoviesIdPage() {
@@ -11,7 +11,7 @@ export default function MoviesIdPage() {
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  const backLinkHref = location.state.from.search ?? '/movies';
+  const backLinkHref = useRef(location.state?.from ?? '/');
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -29,10 +29,9 @@ export default function MoviesIdPage() {
     fetchData();
   }, [movieId]);
   
-console.log(location.state.from.search);
   return (
     <div>
-      <BackToLink to={backLinkHref}>GO BACK</BackToLink>
+      <BackToLink to={backLinkHref.current}>GO BACK</BackToLink>
       {loading && <Loader />}
       {error && <ErrorMassage />}
 
